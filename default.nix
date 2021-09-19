@@ -13,6 +13,7 @@ stdenv.mkDerivation rec {
     meson
     ninja
     pkg-config
+    systemd
   ];
 
   buildInputs = [
