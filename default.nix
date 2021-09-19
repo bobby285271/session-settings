@@ -13,7 +13,6 @@ stdenv.mkDerivation rec {
     meson
     ninja
     pkg-config
-    systemd
   ];
 
   buildInputs = [
@@ -21,6 +20,7 @@ stdenv.mkDerivation rec {
     gnome3.gnome-keyring
     onboard
     orca
+    systemd
   ];
 
   mesonFlags = [
@@ -29,6 +29,8 @@ stdenv.mkDerivation rec {
     "-Ddetect-program-prefixes=true"
     "--sysconfdir=${placeholder "out"}/etc"
   ];
+  
+  PKG_CONFIG_SYSTEMD_SYSTEMDUSERUNITDIR = "${placeholder "out"}/lib/systemd/user";
 
   meta = with stdenv.lib; {
     description = "Session settings for elementary";
